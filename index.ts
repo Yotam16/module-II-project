@@ -1,5 +1,5 @@
 
-import { ActTypes, Act, Actlist /* ,funcs */ } from "dist/foos.js";
+// import { ActTypes, Act, Actlist } from "/dist/foos.js";
 
 
 function playClickSound() {
@@ -7,17 +7,15 @@ function playClickSound() {
     const audio = new Audio("chime.wav");
     audio.play();
 }
-
-
-function submitForm() {
-
+function submitForm(event) {
+    event?.preventDefault();
     playClickSound();
 
-    const activitySelect = document.getElementById('activity');
-    const dateInput = document.getElementById('date');
-    const startTimeInput = document.getElementById('startTime');
-    const endTimeInput = document.getElementById('endTime');
-    const intensity = document.getElementById('intensity');
+    const activitySelect = (document.getElementById('activity') as HTMLSelectElement).value;
+    const dateInput = (document.getElementById('date') as HTMLInputElement).value;
+    const startTimeInput = (document.getElementById('startTime') as HTMLInputElement).value;
+    const endTimeInput = (document.getElementById('endTime') as HTMLInputElement).value;
+    const intensity = (document.getElementById('intensity') as HTMLInputElement).value;
 
     const activityObject = {
         typ: activitySelect,
@@ -26,6 +24,8 @@ function submitForm() {
         date: dateInput,
         intensity: intensity
     };
+
+    console.log(activityObject);
 
     return activityObject;
 }

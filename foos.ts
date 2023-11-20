@@ -3,22 +3,32 @@ type ActTypes = "running" | "cycling" | "swimming" | "yoga" | "weightlifting" | 
 
 type Act = {
     typ: ActTypes;
-    str_time: Date;
-    end_time: Date;
+    startTime: Date;
+    endTime: Date;
+    date: Date;
     intensity: number;  // 1-5, with 0 serving as undefined
 };
 
 type Actlist = Act[];
 
 
+function submitForm() {
 
+    const activitySelect = document.getElementById('activity');
+    const dateInput = document.getElementById('date');
+    const startTimeInput = document.getElementById('startTime');
+    const endTimeInput = document.getElementById('endTime');
+    const intensity = document.getElementById('intensity');
 
-function init() {}
+    const activityObject = {
+        typ: activitySelect,
+        startTime: startTimeInput,
+        endTime: endTimeInput,
+        date: dateInput,
+        intensity: intensity
+    };
 
+    return activityObject;
+}
 
-
-function addObj() {} // submit event listener
-function isObjThere() {}
-
-
-export  { ActTypes, Act, Actlist /* ,funcs */ };
+export  { ActTypes, Act, Actlist };
