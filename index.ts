@@ -1,5 +1,11 @@
+import { Act } from "./foos";
 
-// import { ActTypes, Act, Actlist } from "/dist/foos.js";
+
+function init() {
+    const existingActivitiesJSON = localStorage.getItem('activities');
+    const existingActivities: Act[] = existingActivitiesJSON ? JSON.parse(existingActivitiesJSON) : [];
+    console.log("init value: ",existingActivitiesJSON);
+}
 
 
 function playClickSound() {
@@ -7,7 +13,12 @@ function playClickSound() {
     const audio = new Audio("chime.wav");
     audio.play();
 }
+
+console.log("02");
+
 function submitForm(event) {
+    console.log("submitForm");
+    console.log(event);
     event?.preventDefault();
     playClickSound();
 
@@ -26,8 +37,9 @@ function submitForm(event) {
     };
 
     console.log(activityObject);
+    // local storage stuff
 
-    return activityObject;
+
 }
 
 
