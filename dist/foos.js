@@ -1,17 +1,14 @@
-"use strict";
-exports.__esModule = true;
-function submitForm() {
-    var activitySelect = document.getElementById('activity');
-    var dateInput = document.getElementById('date');
-    var startTimeInput = document.getElementById('startTime');
-    var endTimeInput = document.getElementById('endTime');
-    var intensity = document.getElementById('intensity');
-    var activityObject = {
-        typ: activitySelect,
-        startTime: startTimeInput,
-        endTime: endTimeInput,
-        date: dateInput,
-        intensity: intensity
-    };
-    return activityObject;
+function initActivities() {
+    const existingActivitiesJSON = localStorage.getItem('activities');
+    const existingActivities = existingActivitiesJSON ? JSON.parse(existingActivitiesJSON) : [];
+    console.log("init value: ", existingActivitiesJSON);
 }
+function playClickSound() {
+    const audio = new Audio("chime.wav");
+    audio.play();
+}
+function saveActivities(activities) {
+    const activitiesJSON = JSON.stringify(activities);
+    localStorage.setItem('activities', activitiesJSON);
+}
+export { initActivities, playClickSound, saveActivities };

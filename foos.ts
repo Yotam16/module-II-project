@@ -12,23 +12,25 @@ type Act = {
 type Actlist = Act[];
 
 
-function submitForm() {
-
-    const activitySelect = document.getElementById('activity');
-    const dateInput = document.getElementById('date');
-    const startTimeInput = document.getElementById('startTime');
-    const endTimeInput = document.getElementById('endTime');
-    const intensity = document.getElementById('intensity');
-
-    const activityObject = {
-        typ: activitySelect,
-        startTime: startTimeInput,
-        endTime: endTimeInput,
-        date: dateInput,
-        intensity: intensity
-    };
-
-    return activityObject;
+function initActivities() {
+    const existingActivitiesJSON = localStorage.getItem('activities');
+    const existingActivities: Act[] = existingActivitiesJSON ? JSON.parse(existingActivitiesJSON) : [];
+    console.log("init value: ",existingActivitiesJSON);
 }
 
-export  { ActTypes, Act, Actlist };
+
+function playClickSound() {
+
+    const audio = new Audio("chime.wav");
+    audio.play();
+}
+
+function saveActivities(activities: Act[]) {
+    const activitiesJSON = JSON.stringify(activities);
+    localStorage.setItem('activities', activitiesJSON);
+}
+
+
+
+
+export  { ActTypes, Act, Actlist,initActivities, playClickSound, saveActivities };

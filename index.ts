@@ -1,22 +1,12 @@
-import { Act } from "./foos";
+import { Act , initActivities, playClickSound, saveActivities  } from "./foos.js";
 
 
-function init() {
-    const existingActivitiesJSON = localStorage.getItem('activities');
-    const existingActivities: Act[] = existingActivitiesJSON ? JSON.parse(existingActivitiesJSON) : [];
-    console.log("init value: ",existingActivitiesJSON);
-}
-
-
-function playClickSound() {
-
-    const audio = new Audio("chime.wav");
-    audio.play();
-}
 
 console.log("02");
 
-function submitForm(event) {
+initActivities();
+
+function submitForm(event : any) {
     console.log("submitForm");
     console.log(event);
     event?.preventDefault();
@@ -42,5 +32,6 @@ function submitForm(event) {
 
 }
 
+export { submitForm }
 
 
